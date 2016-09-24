@@ -1,0 +1,36 @@
+POSIX字符集
+
+
+字符集               匹配字符
+[:alnum:]            文字字符,等效越A-Za-z0-9
+[:alpha:]            文字字符
+[:blank:]            空格(space)和定位(tab)
+[:digit:]            数字字符
+[:graph:]            非空字符(非空格和非控制符)
+[:lower:]            小写字符
+[:cntrl:]            控制字符
+[:print:]            非空字符(包括空格)
+[:punct:]            标点符号
+[:space:]            所有空白字符(新行,空格,制表符)
+[:upper:]            大写字符
+[:xdigit:]           16进制数字(0-9,a-f,A-F)
+
+
+example
+
+a.txt 文件中的内容:
+
+
+123
+hello ,nicky
+this num is 123_456 , please
+
+
+grep -E "[[:digit:]_]+" a.txt
+
+
+运用 [[:digit:]_]+ 正则表达式 匹配一个或多个数字字符或下划线
+
+
+
+
