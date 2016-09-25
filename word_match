@@ -1,0 +1,50 @@
+#This example demonstrates how to use this word match
+#Histoy :
+# 09/25 2016 RNjack first release
+
+#在linux中运行 测试  正则表达式语法扩展,\< 和 \> 分别匹配单词开头和单词结尾 
+
+#单词开头有两种情况,一种是位于行的起始位置,一种是紧跟在非单词组成的字符后面;同样
+#,单词的结尾也有两种情况,行的末尾和非单词组成的字符
+echo "This is a word"| grep "\<word\>"
+
+#匹配出 单词开头+word+单词结尾
+This is a word 
+
+
+echo  "These are words" | grep "\<word"
+
+#匹配出单词开头+word
+These are words
+
+
+echo "Thess are words" | grep "\<word\>"
+
+#匹配 单词开头+word+单词结尾,匹配失败
+
+
+note:
+GNU支持额外正则表达式运算符
+
+运算符    含义
+\w        匹配任何单词组成的字符,等同于 [:alnum:]
+
+\W        匹配任何非单词组成的字符
+ 
+\<\>      匹配单词的开头和结尾
+
+\b        匹配单词开头和结尾找到的空字符串.\bword相当于\<word\>
+          注意:awk中使用\b表示后退字符,因此 GUN awk使用\y表示此功能
+
+\B        匹配两个单词组成字符间的空空字符串
+
+
+\'\       分别匹配emacs缓冲区的开头和结尾.GNU程序通常将它们视为与^和$同义
+
+
+
+
+
+
+
+
