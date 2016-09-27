@@ -1,6 +1,6 @@
 This case is to match the phine number;
 
-History: 09/26 2016 RNjack  First release
+History: 09/27 2016 RNjack  Second release
 
 number:
 
@@ -37,6 +37,28 @@ echo '888-555-1212-1234' | grep -E "^[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4
 ehco "888 555 1212 1234" |grep -E "^[[:digit:]]{3}[^[:digit:]]+[[:digit:]]{3}[^[:digit:]]+[[:digit:]]{4}[^[:digit:]]+[[:digit:]]+$"
 
 其中 [^[:digit:]]+ 匹配除开数字的所有字符,出现次数一个或多个
+
+
+4.处理当分隔符不出现的情况的数字
+echo "88855512121234"|grep -E "^[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{4}[^[:digit:]]*[[:digit:]]*$"
+
+和3中的正则表达式样式差不多,不过将其中的+换成 *  *表示匹配0个或多个
+对于分隔符和分机号都可以选择出现,或者不出现
+
+
+5.电话号码前出现其它字符的时候,4中的正则表达式不能正常匹配
+故不能以单纯的数字开头:在区号的前面出现一个或多个非数字字符
+
+echo "(888)-555-1212-w1234"|grep -E "[^[:digit:]]*[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{4}[^[:digit:]]*[[:digit:]]*$"
+
+但是该情况 不能匹配当区号前面是 数字的情况.
+
+
+故最终结果 不管区号前面出现的情况
+
+正则表达式为: 
+[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{3}[^[:digit:]]*[[:digit:]]{4}[^[:digit:]]*[[:digit:]]*$
+
 
 
 
